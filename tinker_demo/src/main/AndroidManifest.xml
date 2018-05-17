@@ -9,6 +9,12 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -40,6 +46,13 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+
+        <!-- 设置您在百度移动统计网站上添加的APP的AppKey -->
+        <!--https://mtj.baidu.com/web/help/article?id=76&type=0-->
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="19f22bbc23" />
+
 
 
     </application>
