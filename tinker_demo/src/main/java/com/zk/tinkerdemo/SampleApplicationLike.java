@@ -15,7 +15,7 @@ import com.tencent.tinker.loader.app.DefaultApplicationLike;
 public class SampleApplicationLike extends DefaultApplicationLike {
 
     public static final String TAG = "Tinker.SampleApplicationLike";
-    public static  String channel = null;
+    public static String channel = null;
 
     public SampleApplicationLike(Application application, int tinkerFlags,
                                  boolean tinkerLoadVerifyFlag, long applicationStartElapsedTime,
@@ -27,12 +27,14 @@ public class SampleApplicationLike extends DefaultApplicationLike {
     @Override
     public void onCreate() {
         super.onCreate();
-         channel = WalleChannelReader.getChannel(getApplication(), "default");
+        channel = WalleChannelReader.getChannel(getApplication(), "default");
 
-         Bugly.setAppChannel(getApplication(),channel);
+        Bugly.setAppChannel(getApplication(), channel);
         // 这里实现SDK初始化，appId替换成你的在Bugly平台申请的appId
         // 调试时，将第三个参数改为true
         Bugly.init(getApplication(), "c4ef33c25b", true);
+        //设置为开发设备
+        //Bugly.setIsDevelopmentDevice(getApplication(), true);
     }
 
 

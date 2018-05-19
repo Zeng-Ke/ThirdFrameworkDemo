@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-// 依赖插件脚本，平时编写代码的时候这里其实可以注释，不然每次build都会生成基准包，只要在打正式包的时候放开注释就好了
+// 依赖插件脚本，平时编写代码的时候这里其实可以注释，不然每次build都会生成基准包，只要在打正式包和补丁包的时候放开注释就好了
 apply from: 'tinker-support.gradle'
 apply plugin: 'walle'
 
@@ -12,8 +12,8 @@ android {
         applicationId "com.zk.tinkerdemo"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 2
-        versionName "1.0.2"
+        versionCode 7
+        versionName "1.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //设置支持的SO库架构
@@ -41,7 +41,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release //签名，注意buildTypes要放到signingConfigs的后面
         }
