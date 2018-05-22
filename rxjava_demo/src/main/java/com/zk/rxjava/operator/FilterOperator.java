@@ -116,13 +116,10 @@ public class FilterOperator {
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        Log.d(TAG, String.valueOf(integer));
+                        Log.d(TAG + "distinctUntilChanged", String.valueOf(integer));
                     }
                 });
     }
-
-
-
 
 
     /**
@@ -205,7 +202,7 @@ public class FilterOperator {
 
                     @Override
                     public void onNext(Integer integer) {
-                        Log.d(TAG + "skip", String.valueOf(integer));
+                        Log.d(TAG + "take", String.valueOf(integer));
                     }
 
                     @Override
@@ -215,7 +212,7 @@ public class FilterOperator {
 
                     @Override
                     public void onComplete() {
-                        Log.d(TAG + "skip", "onComplete");
+                        Log.d(TAG + "take", "onComplete");
                     }
                 });
     }
@@ -228,7 +225,7 @@ public class FilterOperator {
     public static void takeLast() {
         Observable
                 .just(1, 2, 3, 4, 5, 6, 7)
-                .take(2)
+                .takeLast(2)
                 .subscribe(new Observer<Integer>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -237,7 +234,7 @@ public class FilterOperator {
 
                     @Override
                     public void onNext(Integer integer) {
-                        Log.d(TAG + "skip", String.valueOf(integer));
+                        Log.d(TAG + "takeLast", String.valueOf(integer));
                     }
 
                     @Override
@@ -247,7 +244,7 @@ public class FilterOperator {
 
                     @Override
                     public void onComplete() {
-                        Log.d(TAG + "skip", "onComplete");
+                        Log.d(TAG + "takeLast", "onComplete");
                     }
                 });
     }
@@ -279,10 +276,10 @@ public class FilterOperator {
     /**
      * ==============elementAtOrError()===================================================
      * <p>
-         * 在elementAtError()的基础上，当出现越界情况(当获取位置的索引>事件序列的长度)，即抛出异常
+     * 在elementAtError()的基础上，当出现越界情况(当获取位置的索引>事件序列的长度)，即抛出异常
      */
     public static void elementAtOrError() {
-        Observable.range(1, 5)
+        Observable.just(1,2,3,4, 5)
                 .elementAtOrError(6)
                 .subscribe(new Consumer<Integer>() {
                     @Override
@@ -290,6 +287,7 @@ public class FilterOperator {
                         Log.d(TAG + "elementAtOrErr", String.valueOf(integer));
                     }
                 });
+
     }
 
 

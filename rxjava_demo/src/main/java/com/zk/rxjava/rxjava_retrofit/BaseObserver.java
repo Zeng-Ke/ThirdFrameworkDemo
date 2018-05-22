@@ -24,15 +24,18 @@ public class BaseObserver<T> extends DisposableObserver<BaseBean<T>> {
 
     @Override
     public void onNext(BaseBean<T> tBaseBean) {
-        if (mObserver != null)
+        if (tBaseBean.retcode.equals("000000") & mObserver != null)
             mObserver.onNext(tBaseBean.data);
+        else  if (tBaseBean.retcode == "100707")
+            mObserver.onError(new Exception("调用次数超限"));
+        else  mObserver.onError(new Exception("网络出错"));
+
 
 
     }
 
     @Override
     public void onError(Throwable e) {
-
         Log.d("=================", e.getMessage());
     }
 

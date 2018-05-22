@@ -79,7 +79,7 @@ public class ConditionOperator {
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        Log.d(TAG + "repeat", String.valueOf(integer));
+                        Log.d(TAG + "repeatUntil", String.valueOf(integer));
                     }
                 });
     }

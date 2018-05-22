@@ -15,11 +15,14 @@ public class PhoneInfoBean {
      * location : 广东 广州市
      */
 
-   public String id;
-   public String zipCode;
-   public String cardType;
-   public String areaCode;
-   public String location;
+    public String id;
+    public String zipCode;
+    public String cardType;
+    public String areaCode;
+    public String location;
 
-
+    @Override
+    public String toString() {
+        return String.format("%1$s %2$s", location, cardType);
+    }
 }

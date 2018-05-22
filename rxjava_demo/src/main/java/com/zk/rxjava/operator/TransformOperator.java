@@ -162,7 +162,7 @@ public class TransformOperator {
 
                             @Override
                             public void onNext(String s) {
-                                Log.d(TAG + "flatMap", s);
+                                Log.d(TAG + "concatMap", s);
                             }
 
                             @Override
@@ -172,7 +172,7 @@ public class TransformOperator {
 
                             @Override
                             public void onComplete() {
-                                Log.d(TAG + "flatMap", "complete");
+                                Log.d(TAG + "concatMap", "complete");
                             }
                         });
     }

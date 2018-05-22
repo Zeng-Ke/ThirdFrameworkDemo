@@ -28,12 +28,12 @@ import io.reactivex.functions.Function;
  */
 public class FunctionOperator {
 
-    public static final String TAG = "==RXJAVA=";
+    public static final String TAG = "===RXJAVA=";
 
     /**
      * ==================subscribe 操作符===========================
-     *
-     *  连接被观察者和观察者
+     * <p>
+     * 连接被观察者和观察者
      */
     public static void subscribe() {
 
@@ -95,10 +95,25 @@ public class FunctionOperator {
         Observable
                 .just(1, 2)
                 .delay(10, TimeUnit.SECONDS)
-                .subscribe(new Consumer<Integer>() {
+                .subscribe(new Observer<Integer>() {
                     @Override
-                    public void accept(Integer integer) throws Exception {
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG + "delay", "onSubscribe");
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
                         Log.d(TAG + "delay", String.valueOf(integer));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
     }
@@ -235,7 +250,7 @@ public class FunctionOperator {
                 .onErrorReturn(new Function<Throwable, Integer>() {
                     @Override
                     public Integer apply(Throwable throwable) throws Exception {
-                        Log.e(TAG, "发生了错误：  " + throwable.getMessage());
+                        Log.e(TAG + "onErrorReturn", "发生了错误：  " + throwable.getMessage());
                         return 404;
                     }
                 })
@@ -247,17 +262,17 @@ public class FunctionOperator {
 
                     @Override
                     public void onNext(Integer integer) {
-                        Log.d(TAG, String.valueOf(integer));
+                        Log.d(TAG + "onErrorReturn", String.valueOf(integer));
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d(TAG, e.getMessage());
+                        Log.d(TAG+"onErrorReturn", e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.d(TAG, "onComplete");
+                        Log.d(TAG + "onErrorReturn", "onComplete");
                     }
                 });
 
@@ -295,17 +310,17 @@ public class FunctionOperator {
 
             @Override
             public void onNext(Integer integer) {
-                Log.d(TAG, String.valueOf(integer));
+                Log.d(TAG + "onExceptionResumeNext", String.valueOf(integer));
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, e.getMessage());
+                Log.d(TAG + "onExceptionResumeNext", e.getMessage());
             }
 
             @Override
             public void onComplete() {
-                Log.d(TAG, "onComplete");
+                Log.d(TAG + "onExceptionResumeNext", "onComplete");
             }
         });
     }
@@ -405,9 +420,9 @@ public class FunctionOperator {
                     @Override
                     public boolean getAsBoolean() throws Exception {
 
-                        //return true ： 重新发送请求(若持续遇到错误，就持续重新发送)
-                        // return false ：不重新发送数据 并且调用观察者的onError()方法结束
-                        return false;
+                        //return true ： 不重新发送请求，并且调用观察者的onError()方法结束
+                        // return false ： 重新发送数据(若持续遇到错误，就持续重新发送)
+                        return true;
                     }
                 })
                 .subscribe(new Observer<Integer>() {
@@ -418,12 +433,12 @@ public class FunctionOperator {
 
                     @Override
                     public void onNext(Integer integer) {
-                        Log.e(TAG + "retryUntil", String.valueOf(integer));
+                        Log.d(TAG + "retryUntil", String.valueOf(integer));
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.d(TAG + "retryUntil", e.getMessage());
                     }
 
                     @Override
@@ -512,8 +527,8 @@ public class FunctionOperator {
 
 
     /**
-     *  ===============repeatWhen() 操作符==============
-     *
+     * ===============repeatWhen() 操作符==============
+     * <p>
      * 将原始 Observable 停止发送事件的标识（Complete（） / Error（））转换成1个 Object 类型数据传递给1个新被观察者（Observable）
      * ，以此决定是否重新订阅 & 发送原来的 Observable
      */
@@ -524,7 +539,7 @@ public class FunctionOperator {
                 .repeatWhen(new Function<Observable<Object>, ObservableSource<?>>() {
                     @Override
                     public ObservableSource<?> apply(Observable<Object> objectObservable) throws Exception {
-                        return  objectObservable.flatMap(new Function<Object, ObservableSource<?>>() {
+                        return objectObservable.flatMap(new Function<Object, ObservableSource<?>>() {
                             @Override
                             public ObservableSource<?> apply(Object o) throws Exception {
 
@@ -550,7 +565,7 @@ public class FunctionOperator {
 
                     @Override
                     public void onNext(Integer integer) {
-
+                        Log.d(TAG + "repeatWhen", String.valueOf(integer));
                     }
 
                     @Override
@@ -564,9 +579,6 @@ public class FunctionOperator {
                     }
                 });
     }
-
-
-
 
 
 }

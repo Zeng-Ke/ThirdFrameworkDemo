@@ -262,7 +262,7 @@ public class CreateOperator {
 
 
     /**
-     * Range  操作符
+     * range  操作符
      * <p>
      * 作用发送指定范围的序列，可指定范围.作用类似intervalRange，但不同的是range是无延迟发送
      */
@@ -273,7 +273,7 @@ public class CreateOperator {
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        Log.d(TAG + "interval", String.valueOf(integer));//从2开始输出
+                        Log.d(TAG + "range", String.valueOf(integer));//从2开始输出
                     }
                 });
     }

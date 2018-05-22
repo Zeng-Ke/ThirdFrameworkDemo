@@ -19,7 +19,7 @@ import retrofit2.http.Query;
  */
 public interface IApi {
 
-    @GET("/phone_number_ascription")
+    @GET("/tools/phone_number_ascription")
     Observable<BaseBean<List<PhoneInfoBean>>> getPhoneInfo(
             @Query("phoneNumber") String phoneNumber,
             @Query("apikey") String apikey

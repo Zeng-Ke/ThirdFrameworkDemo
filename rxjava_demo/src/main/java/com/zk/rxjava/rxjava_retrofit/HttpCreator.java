@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -23,15 +24,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpCreator {
 
 
-    //http://120.76.205.241:8000/tools/phone_number_ascription?phoneNumber=13610173029&apikey
+    //http://120.76.205.241:8000/tools/phone_number_ascription?phoneNumber=13610100000&apikey
     // =JQ4iONjs1LBg60Ghgj842cKvjgVE7dDRXfBpxsvWTrgP16hY5RtOaVgqy1Wky7MT
 
-    public final static String SCHEMA = "http://";
-    public final static String COMMON_HOST = "api.tgnet.com";
-    public final static String COMMON_DATA_BASE_URL = SCHEMA + COMMON_HOST;
 
-
-    public final static String PHONENUMBER_URL ="https://api02.bitspaceman.com/tools/";
+    public final static String PHONENUMBER_URL = "http://120.76.205.241:8000";
 
 
     private static Retrofit createRetrofit() {
@@ -39,6 +36,7 @@ public class HttpCreator {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
 
         return new Retrofit

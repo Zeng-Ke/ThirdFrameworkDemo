@@ -7,6 +7,11 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.zk.rxjava.operator.ConditionOperator;
+import com.zk.rxjava.operator.CreateOperator;
+import com.zk.rxjava.operator.FilterOperator;
+import com.zk.rxjava.operator.FunctionOperator;
+import com.zk.rxjava.operator.MergeOperator;
+import com.zk.rxjava.operator.TransformOperator;
 import com.zk.rxjava.rxjava_retrofit.MObserver;
 import com.zk.rxjava.rxjava_retrofit.bean.CommonDataBean;
 import com.zk.rxjava.rxjava_retrofit.bean.DoubleListBean;
@@ -21,52 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // CreateOperator.subscribe();
-        //CreateOperator.just();
-        //CreateOperator.fromIterable();
-        //CreateOperator.fromArray();
-        //CreateOperator.interval();
-        // TransformOperator.concatMap();
-        // TransformOperator.flatMap();
-        //  FilterOperator.filter();
-        // FilterOperator.take();
-        // FilterOperator.distinct();
-        // FilterOperator.buffer();
-        //FilterOperator.skip();
-        //FilterOperator.merge();
-        //MergeOperator.zip();
-        //MergeOperator.combineLatest();
-        //MergeOperator.reduce();
-        //MergeOperator.collect();
-        // MergeOperator.startWith();
-        //MergeOperator.count();
-        //FilterOperator.elementAt();
-        //FilterOperator.throttleFirst();
 
-        //FilterOperator.ignoreElements();
-        //FilterOperator.takeUntil();
-        // FilterOperator.takeWhile();
-        //FilterOperator.ofType();
-        //ConditionOperator.repeat();
-        // ConditionOperator.repeatUntil();
-        //ConditionOperator.delay();
-        //MergeOperator.concatDelayError();
-        //FunctionOperator.dos();
-        //FunctionOperator.onErrorReturn();
-        //FunctionOperator.onExceptionResumeNext();
-        // FunctionOperator.retry();
-        //FunctionOperator.retryUntil();
-        // FunctionOperator.retryWhen();
-
-        //ConditionOperator.all();
-        //ConditionOperator.takeWhile();
-        //ConditionOperator.skipWhile();
-        //ConditionOperator.takeUntil2();
-        //ConditionOperator.sequenceEqual();
-        // ConditionOperator.contains();
-        //ConditionOperator.isEmpty();
-        //ConditionOperator.amb();
-        // ConditionOperator.defaultEmpty();
 
         final TextView textView = findViewById(R.id.tv);
 
@@ -76,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNext(List<PhoneInfoBean> o) {
                 if (o != null && o.size() > 0)
-                    textView.setText(o.get(0).location);
+                    textView.setText(o.get(0).toString());
             }
         });
 
-      /*  httpService.getAreaData(new MObserver<CommonDataBean<DoubleListBean>>() {
+       /* httpService.getAreaData(new MObserver<CommonDataBean<DoubleListBean>>() {
             @Override
             public void onNext(CommonDataBean<DoubleListBean> o) {
-                Log.d("==========", o.v);
+                Log.d("==========", o.items.size() + " ");
             }
 
             @Override

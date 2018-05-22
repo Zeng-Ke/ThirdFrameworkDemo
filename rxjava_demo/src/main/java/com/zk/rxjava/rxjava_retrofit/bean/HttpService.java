@@ -23,12 +23,12 @@ public class HttpService {
 
     public void getPhoneNumber(MObserver<List<PhoneInfoBean>> observer) {
 
-        Observable<BaseBean<List<PhoneInfoBean>>> observable = HttpCreator.createApi(IApi.class).getPhoneInfo("13610173029",
+        Observable<BaseBean<List<PhoneInfoBean>>> observable = HttpCreator.createApi(IApi.class).getPhoneInfo("13610100000",
                 "JQ4iONjs1LBg60Ghgj842cKvjgVE7dDRXfBpxsvWTrgP16hY5RtOaVgqy1Wky7MT");
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<List<PhoneInfoBean>>(observer));
+                .subscribe(new BaseObserver<>(observer));
 
     }
 
@@ -38,7 +38,7 @@ public class HttpService {
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<CommonDataBean<DoubleListBean>>(observer));
+                .subscribe(new BaseObserver<>(observer));
     }
 
 

@@ -27,7 +27,7 @@ import io.reactivex.functions.Consumer;
  */
 public class MergeOperator {
 
-    public static final String TAG = "==RXJAVA==";
+    public static final String TAG = "===RXJAVA==";
 
     /**
      * ========================merge，concat 操作符 ======================================
@@ -192,7 +192,7 @@ public class MergeOperator {
 
                     @Override
                     public void onComplete() {
-                        Log.d(TAG + "merge", "onComplete");
+                        Log.d(TAG + "combineLatest", "onComplete");
                     }
                 });
     }
