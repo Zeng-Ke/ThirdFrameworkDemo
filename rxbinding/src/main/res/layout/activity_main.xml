@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <TextView
+            android:id="@+id/btn_countdown"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:onClick="countdown"
+            android:text="获取验证码"/>
+
+        <TextView
+            android:id="@+id/btn_input_search"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:onClick="inputsearch"
+            android:text="输入搜索"/>
+
+        <TextView
+            android:id="@+id/btn_fastclick"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:onClick="fastclick"
+            android:text="防抖"/>
+
+        <TextView
+            android:id="@+id/btn_multijudge"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:onClick="multijudge"
+            android:text="多重判断"/>
+
+
+        <TextView
+            android:id="@+id/touch"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:text="touch"/>
+
+        <TextView
+            android:id="@+id/click"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:text="click"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

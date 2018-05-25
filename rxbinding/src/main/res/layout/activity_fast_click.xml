@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="com.zk.rxbinding.InputSearchActivity">
+
+
+    <TextView
+        android:id="@+id/btn_can_fast"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="fastClick"
+        android:text="（不防抖）点击次数："/>
+
+    <TextView
+        android:id="@+id/btn_not_fast"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:text="（防抖）点击次数："/>
+
+
+</LinearLayout>

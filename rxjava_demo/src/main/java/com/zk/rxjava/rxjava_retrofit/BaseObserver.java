@@ -26,10 +26,11 @@ public class BaseObserver<T> extends DisposableObserver<BaseBean<T>> {
     public void onNext(BaseBean<T> tBaseBean) {
         if (tBaseBean.retcode.equals("000000") & mObserver != null)
             mObserver.onNext(tBaseBean.data);
-        else  if (tBaseBean.retcode == "100707")
+        else if (tBaseBean.retcode == "100707")
             mObserver.onError(new Exception("调用次数超限"));
-        else  mObserver.onError(new Exception("网络出错"));
-
+        else if (tBaseBean.retcode == "100002")
+            mObserver.onError(new Exception("搜索不到结果"));
+        else mObserver.onError(new Exception("网络出错"));
 
 
     }

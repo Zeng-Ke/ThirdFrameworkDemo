@@ -28,30 +28,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final TextView textView = findViewById(R.id.tv);
+       /* final TextView textView = findViewById(R.id.tv);
 
         HttpService httpService = new HttpService();
 
-        httpService.getPhoneNumber(new MObserver<List<PhoneInfoBean>>() {
+        httpService.getPhoneNumber("13610100000",new MObserver<List<PhoneInfoBean>>() {
             @Override
             public void onNext(List<PhoneInfoBean> o) {
                 if (o != null && o.size() > 0)
                     textView.setText(o.get(0).toString());
             }
         });
+*/
+       //FunctionOperator.debounce();
+       FunctionOperator.subscribeOn_observerOn();
 
-       /* httpService.getAreaData(new MObserver<CommonDataBean<DoubleListBean>>() {
-            @Override
-            public void onNext(CommonDataBean<DoubleListBean> o) {
-                Log.d("==========", o.items.size() + " ");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                super.onError(e);
-                Log.e("================", e.getMessage());
-            }
-        });*/
 
     }
 }

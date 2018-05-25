@@ -16,12 +16,14 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.BiPredicate;
 import io.reactivex.functions.BooleanSupplier;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 功能操作符： 辅助被观察者(Observable) 发送事件时实现一些功能性需求，如错误处理，线程调度
@@ -267,7 +269,7 @@ public class FunctionOperator {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d(TAG+"onErrorReturn", e.getMessage());
+                        Log.d(TAG + "onErrorReturn", e.getMessage());
                     }
 
                     @Override
@@ -578,6 +580,61 @@ public class FunctionOperator {
 
                     }
                 });
+    }
+
+    /**
+     * ===============debounce() 操作符==============
+     * <p>
+     * 一定的时间内没有操作就会发送事件（只会发送最后一次操作的事件）。
+     * <p>+
+     * 以下的例子： 发送5个事件，每个事件间隔1秒。但是debounce限定了2秒内没有任何操作才会真正发送事件。所以只有最后一次满足条件，只能接收到事件 5
+     */
+    public static void debounce() {
+
+        Observable.intervalRange(1, 5, 0, 1, TimeUnit.SECONDS)
+                .debounce(2, TimeUnit.SECONDS)
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        Log.d(TAG + "debounce", String.valueOf(aLong));
+                    }
+                });
+
+    }
+
+    /**
+     * ===============subscribeOn() 操作符==============
+     * ===============observerOn() 操作符==============
+     * <p>
+     * <p>
+     * subscribeOn : 发送事件的线程
+     * observerOn： 接收事件的线程
+     * <p>
+     * 线程调度器：
+     * Schedulers.io(): 代表io操作的线程，通常用于网络，读写文件等io密集型的操作
+     * Schedulers.compucation(): 代表CPU计算密集型的操作，例如需要大量计算的操作
+     * Schedulers.newThread(): 代表一个常规的新线程
+     * AndroidSchedulers。mainThread(): 代表Android的主线程
+     */
+    public static void subscribeOn_observerOn() {
+
+        Observable
+                .create(new ObservableOnSubscribe<String>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                        emitter.onNext("事件");
+                        Log.d(TAG + "subscribeOn_ObserverOn", "发送事件:" + Thread.currentThread().getName());
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.d(TAG + "subscribeOn_ObserverOn", "接收事件:   " + Thread.currentThread().getName());
+                    }
+                });
+
     }
 
 

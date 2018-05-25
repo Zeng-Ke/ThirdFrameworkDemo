@@ -34,10 +34,5 @@ proguard/
 .DS_Store
 captures/
 .externalNativeBuild
-/app/libs/x86_64/
-/app/libs/x86/
-/utils/libs/x86/
-/utils/libs/X86_64/
-/tgnetmap/libs/x86/
-/tgnetmap/libs/x86_64/
+
 

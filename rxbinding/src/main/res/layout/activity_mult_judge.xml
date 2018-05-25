@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.zk.rxbinding.MultJudgeActivity">
+
+
+    <EditText
+        android:id="@+id/ed_name"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center_vertical"
+        android:hint="姓名"
+        android:paddingLeft="15dp"/>
+
+    <EditText
+        android:id="@+id/ed_age"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center_vertical"
+        android:hint="年龄"
+        android:paddingLeft="15dp"/>
+
+
+    <EditText
+        android:id="@+id/ed_address"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center_vertical"
+        android:hint="地址"
+        android:paddingLeft="15dp"/>
+
+
+
+    <TextView
+        android:id="@+id/btn_register"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:enabled="false"
+        android:textColor="@color/selector_countdown_btn"
+        android:text="注册"/>
+
+
+</LinearLayout>
