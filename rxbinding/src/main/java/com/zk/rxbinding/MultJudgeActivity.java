@@ -36,7 +36,7 @@ public class MultJudgeActivity extends AppCompatActivity {
         final Observable<CharSequence> ageObservable = RxTextView.textChanges(mEdAge).skip(1);
         final Observable<CharSequence> addressObservable = RxTextView.textChanges(mEdAddress).skip(1);
 
-
+        //combineLatest 把其中一个Observable最新的数据和其它的Observable发送的数据结合
         Observable.combineLatest(nameObservable, ageObservable, addressObservable, new Function3<CharSequence,
                 CharSequence, CharSequence, Boolean>() {
 
@@ -44,7 +44,7 @@ public class MultJudgeActivity extends AppCompatActivity {
             public Boolean apply(CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3)
                     throws Exception {
                 if (charSequence != null && charSequence.length() > 0 && charSequence2 != null && charSequence2.length() > 0 &&
-                        charSequence != null && charSequence3.length() > 0)
+                        charSequence != null && charSequence3.length() > 2)
                     return true;
                 return false;
             }
@@ -59,6 +59,7 @@ public class MultJudgeActivity extends AppCompatActivity {
 
         RxView.clicks(btnRegister)
                 .subscribe(new Consumer<Object>() {
+
                     @Override
                     public void accept(Object o) throws Exception {
                         Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();

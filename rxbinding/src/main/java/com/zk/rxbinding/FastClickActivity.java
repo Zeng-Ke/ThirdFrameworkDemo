@@ -35,6 +35,7 @@ public class FastClickActivity extends AppCompatActivity {
                         btnNoFastClick.setText(String.format("（防抖）点击次数：%1$s", notFastClickCount));
                     }
                 });
+
     }
 
     public void fastClick(View view) {
@@ -42,7 +43,6 @@ public class FastClickActivity extends AppCompatActivity {
         ((TextView) view).setText(String.format("（不防抖）点击次数：%1$s", fastClickCount));
 
     }
-
 
 
 }
