@@ -1,21 +1,18 @@
 package com.zk.arouter_demo;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
+import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
-import com.alibaba.android.arouter.facade.template.IInterceptor;
 import com.alibaba.android.arouter.launcher.ARouter;
-
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,9 +96,25 @@ public class MainActivity extends AppCompatActivity {
             case R.id.service_activity:
                 ARouter.getInstance().build(ServiceActivity.ROUTE_PATH).navigation();
                 break;
-
+            case R.id.activity_for_result:
+                ARouter.getInstance().build(Test1Activity.ROUTE_PATH).navigation(this, 666);
+                break;
 
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 666:
+                    String extra = data.getStringExtra(Test1Activity.RESULT_KEY);
+                    Toast.makeText(this, "extra", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+
+        }
+
+    }
 }

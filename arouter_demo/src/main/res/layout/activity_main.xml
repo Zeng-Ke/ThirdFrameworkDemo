@@ -70,7 +70,6 @@
         android:text="带动画跳转"/>
 
 
-
     <TextView
         android:id="@+id/service_activity"
         android:layout_width="match_parent"
@@ -80,6 +79,16 @@
         android:gravity="center"
         android:onClick="onClick"
         android:text="使用注入服务"/>
+
+    <TextView
+        android:id="@+id/activity_for_result"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="带请求跳转"/>
 
 
 </LinearLayout>
