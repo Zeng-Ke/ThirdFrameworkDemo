@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             switch (requestCode) {
                 case 666:
                     String extra = data.getStringExtra(Test1Activity.RESULT_KEY);
-                    Toast.makeText(this, "extra", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, extra, Toast.LENGTH_SHORT).show();
                     break;
             }
 
