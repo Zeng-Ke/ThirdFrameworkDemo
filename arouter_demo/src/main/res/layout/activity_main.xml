@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="com.zk.arouter_demo.MainActivity">
+
+    <TextView
+        android:id="@+id/sample_launch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="简单的应用内跳转"/>
+
+    <TextView
+        android:id="@+id/argument_launch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="带参数应用内跳转"/>
+
+    <TextView
+        android:id="@+id/webview_launch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="网页内跳转"/>
+
+    <TextView
+        android:id="@+id/iinterceptor_launch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="带拦截器跳转"/>
+
+    <TextView
+        android:id="@+id/oldanim_launch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="带动画跳转"/>
+
+    <TextView
+        android:id="@+id/anim_launch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="带动画跳转"/>
+
+
+
+    <TextView
+        android:id="@+id/service_activity"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="使用注入服务"/>
+
+
+</LinearLayout>

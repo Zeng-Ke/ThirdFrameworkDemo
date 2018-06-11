@@ -1,1 +1,1 @@
-include ':rxjava_demo', ':tinker_demo', ':rxbinding', ':dagger_demo'
+include ':rxjava_demo', ':tinker_demo', ':rxbinding', ':dagger_demo', ':arouter_demo'
